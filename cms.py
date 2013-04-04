@@ -456,7 +456,7 @@ class ArticleCategory(ModelSQL, ModelView):
         help='Unique Name is used as the uri.')
     active = fields.Boolean('Active', select=True)
     description = fields.Text('Description', translate=True)
-    template = fields.Many2One('nereid.template', 'Template', required=True)
+    template = fields.Char('Template', required=True)
     articles = fields.One2Many('nereid.cms.article', 'category', 'Articles')
 
     # Article Category can have a banner
@@ -544,7 +544,7 @@ class Article(ModelSQL, ModelView):
     uri = fields.Char('URI', required=True, select=True, translate=True)
     title = fields.Char('Title', required=True, select=True, translate=True)
     content = fields.Text('Content', required=True, translate=True)
-    template = fields.Many2One('nereid.template', 'Template', required=True)
+    template = fields.Char('Template', required=True)
     active = fields.Boolean('Active', select=True)
     category = fields.Many2One('nereid.cms.article.category', 'Category',
         required=True, select=True)
